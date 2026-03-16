@@ -31,5 +31,5 @@ jobs:
           git config --local user.name "github-actions[bot]"
 
           git add sessions.db
-          git commit -m "Database update $(date +'%Y-%m-%d %H:%M:%S')"
+          git commit --allow-empty -m "Database update $(date +'%Y-%m-%d %H:%M:%S')"
           git push -f
