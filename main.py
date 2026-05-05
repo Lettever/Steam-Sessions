@@ -122,7 +122,7 @@ def gameExists(game):
 
 # Should only happen for newly bought games and demos
 def addNewGame(game):
-    print(f"  [New Game] Adding {game['name']}")
+    print(f"[New Game] {game['name']}")
     cur.execute(
         "INSERT INTO Games (appid, name, starting_playtime, total_playtime) VALUES (?, ?, 0, 0)",
         (game["appid"], game["name"]),
@@ -142,7 +142,7 @@ def addSession(game):
         "SELECT total_playtime from Games where appid = ?", (game["appid"],)
     ).fetchone()[0]
     diff = game["playtime_forever"] - total_playtime
-    print(f"  [Session] {game['name']}: +{diff} minutes")
+    print(f"[Session] {game['name']}: +{diff} minutes")
     cur.execute(
         "INSERT INTO Sessions (appid, playtime, date) VALUES (?, ?, ?)",
         (game["appid"], diff, yesterday),
